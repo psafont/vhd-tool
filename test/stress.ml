@@ -15,7 +15,7 @@ let rec process_stream total = function
     process_stream (Int64.add total sectors) s
   | F.End -> Lwt.return total
 
-let test_huge_input switch () =
+let test_huge_input _ () =
   let raw = `anything in
   let server = "" in
   let export_name = "" in

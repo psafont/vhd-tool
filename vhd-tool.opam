@@ -8,11 +8,23 @@ tags: [
   "org:mirage"
   "org:xapi-project"
 ]
-build: [[ "dune" "build" "-p" name "-j" jobs ]
+build: [
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@stresstest" {with-test}
+  ]
 ]
 depends: [
   "ocaml"
   "dune" {build}
+  "alcotest-lwt" {with-test}
   "cohttp-lwt"
   "cstruct" {>= "3.0.0"}
   "io-page"
